@@ -21,11 +21,19 @@ mongoose.connect(`${process.env.START_MONGODB}${process.env.MONGODB_USERNAME}:${
 // Middleware for passport, always add
 app.use(express.json());
 app.use(cors({origin: "http://localhost:3000", credentials: true})); //Allows requests from the client to affect the server
+
+app.set("trust proxy",1); //The 1 means true, this is for the cookie.
+
 app.use(
     session({
         secret: "secretcode",
         resave: true,
         saveUninitialized: true,
+        cookie: {
+          sameSite: "none",
+          secure: true,
+          maxAge: 1000 * 60 * 60 * 24 //One Day cookie in milliseconds
+        }
     })
 );
 app.use(passport.initialize());
