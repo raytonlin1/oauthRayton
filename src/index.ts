@@ -20,7 +20,7 @@ mongoose.connect(`${process.env.START_MONGODB}${process.env.MONGODB_USERNAME}:${
 
 // Middleware for passport, always add
 app.use(express.json());
-app.use(cors({origin: "https://brave-bhabha-63b32f.netlify.app/", credentials: true})); //Allows requests from the client to affect the server
+app.use(cors({origin: "https://brave-bhabha-63b32f.netlify.app", credentials: true})); //Allows requests from the client to affect the server
 
 app.set("trust proxy",1); //The 1 means true, this is for the cookie.
 
