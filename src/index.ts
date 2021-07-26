@@ -20,7 +20,7 @@ mongoose.connect(`${process.env.START_MONGODB}${process.env.MONGODB_USERNAME}:${
 
 // Middleware for passport, always add
 app.use(express.json());
-app.use(cors({origin: "http://localhost:3000", credentials: true})); //Allows requests from the client to affect the server
+app.use(cors({origin: "https://brave-bhabha-63b32f.netlify.app/", credentials: true})); //Allows requests from the client to affect the server
 
 app.set("trust proxy",1); //The 1 means true, this is for the cookie.
 
@@ -95,7 +95,7 @@ app.get('/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/login' }),
   function(req, res) {
     // Successful authentication, redirect home.
-    res.redirect('http://localhost:3000');
+    res.redirect('https://brave-bhabha-63b32f.netlify.app/');
 });
 
 //Github Strategy
@@ -138,7 +138,7 @@ app.get('/auth/github/callback',
   passport.authenticate('github', { failureRedirect: '/login' }),
   function(req, res) {
     // Successful authentication, redirect home.
-    res.redirect('http://localhost:3000/');
+    res.redirect('https://brave-bhabha-63b32f.netlify.app/');
   });
 
 //Twitter Strategy
@@ -182,7 +182,7 @@ app.get('/auth/twitter/callback',
   passport.authenticate('twitter', { failureRedirect: '/login' }),
   function(req, res) {
     // Successful authentication, redirect home.
-    res.redirect('http://localhost:3000/');
+    res.redirect('https://brave-bhabha-63b32f.netlify.app/');
   });
 
 //API calls, not authentication
